@@ -71,7 +71,7 @@ const ComposeMail = ({openDialog, setOpenDialog}) => {
     }
 
     const sendMail = (e) =>{
-        // e.preventDefault();
+        e.preventDefault();
         if(window.Email){
                 window.Email.send({
                 ...config,
