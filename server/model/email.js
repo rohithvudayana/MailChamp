@@ -13,26 +13,26 @@ const EmailSchema = mongoose.Schema({
     body: String,
     date: {
         type: Date,
-        required: true
+        required: false
     },
     image: String,
     name: {
         type: String,
-        required: true
+        required: false
     },
     starred: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false
     },
     bin: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false
     },
     type: {
         type: String,
-        required: true,
+        required: false,
     }
 })
 

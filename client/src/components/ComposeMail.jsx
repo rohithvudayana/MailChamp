@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { Dialog, Box, Typography, styled, InputBase, TextField, Button} from '@mui/material'
-import { Close , DeleteOutline} from '@mui/icons-material'
-import { API_URLS } from '../services/api.urls'
+import { Dialog, Box, Typography, styled, InputBase, TextField, Button } from '@mui/material'
+import { Close , DeleteOutline } from '@mui/icons-material'
+import { API_URLS } from '../services/api.urls.js'
 import useApi from '../hooks/useApi'
-
 
 const dialogStyle = {
     height: '70%',
@@ -12,7 +11,6 @@ const dialogStyle = {
     maxHeight: '100%',
     baxShadow: 'none',
     borderRadius: '10px 10px 10px 10px'
-
 }
 
 const Header = styled(Box) ({
@@ -36,7 +34,6 @@ const RecipientsWrapper = styled(Box) ({
         borderBottom: '1px solid #F5F5F5',
         marginTop: '1px'
     }
-    
 })
 
 const Footer = styled(Box) ({
@@ -54,10 +51,9 @@ const SendButton = styled(Button)({
     width: 85
 })
 
-
 const ComposeMail = ({openDialog, setOpenDialog}) => {
     const [data, setData]  = useState({});
-    const sentEmailService = useApi(API_URLS.saveSentEmail);
+    const sentEmailService = useApi(API_URLS.saveSentEmails);
 
     const config = {
             Host : "smtp.elasticemail.com",
@@ -91,12 +87,12 @@ const ComposeMail = ({openDialog, setOpenDialog}) => {
 
         const payload = {
             to : data.to,
-            from : "codeforinterview03@gmail.com",
+            from : "rohithvudayana46@gmail.com",
             subject : data.subject,
             body : data.body,
             date: new Date(),
             image: '',
-            name: 'Code for Interview',
+            name: 'rohith',
             starred: false,
             type: 'sent'
         }
@@ -110,6 +106,8 @@ const ComposeMail = ({openDialog, setOpenDialog}) => {
 
         }
     }
+
+
 
     return (
         <Dialog
