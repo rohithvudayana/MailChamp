@@ -24,7 +24,7 @@ function App() {
     <Suspense fallback={<SuspenseLoader />}>
       {/* <DataProvider> */}
         <RouterProvider router={router} />
-      {/* </DataProvider> */}
+      {/* </DataProvider>  */}
     </Suspense>
   );
 }

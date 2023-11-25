@@ -13,13 +13,13 @@ const routes = {
         path: '/emails',
         element: Emails
     },
-    invalid: {
-        path: '/*',
-        element: Emails
-    },
     view: {
         path: '/view',
         element: ViewEmail
+    },
+    invalid: {
+        path: '/*',
+        element: Emails
     }
 }
 
