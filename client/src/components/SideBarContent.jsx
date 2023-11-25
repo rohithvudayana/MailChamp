@@ -23,9 +23,13 @@ const SideContainer = styled(Box) ({
         padding: '10px 0 0 5px',
         fontSize: 14,
         fontWeight: 500,
-        cursor: 'pointer'
+        cursor: 'pointer',
+        '& > a':{
+            textDecoration: "none",
+            color: "inherit"
+        }
     },
-    '& > ul > li > svg':{
+    '& > ul > a > li > svg':{
         marginRight: 15
     }
 })
@@ -46,9 +50,12 @@ const SideBarContent = () => {
             <List>
                 {
                     SIDEBAR_DATA.map(data => (
-                        <ListItem>
-                            <data.icon fontSize="small"/>{data.title}
-                        </ListItem>
+                        <NavLink key={data.name} to={`${routes.emails.path}/${data.name}`}>
+                            <ListItem style={ type === data.name.toLowerCase() ? {
+                                backgroundColor: '#f8bbd0',
+                                borderRadius: '16px 16px 16px 16px'
+                            } : {}}><data.icon fontSize="small" />{data.title}</ListItem>
+                        </NavLink>
                     ))
                 }
             </List>

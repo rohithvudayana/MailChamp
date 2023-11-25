@@ -1,8 +1,9 @@
 import express from 'express'
-import { saveSentEmails } from '../controller/email-controller.js';
+import { getEmails, saveSendEmails } from '../controller/email-controller.js';
 
 const routes = express.Router();
 
-routes.post('/save', saveSentEmails)
+routes.post('/save', saveSendEmails);
+routes.get('/emails/:type', getEmails);
 
 export default routes;
