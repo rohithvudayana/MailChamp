@@ -13,7 +13,6 @@ const router = createBrowserRouter(
         <Route path={`${routes.emails.path}/:type`} element={<routes.emails.element />} errorElement={<ErrorComponent />} />
         <Route path={routes.view.path} element={<routes.view.element />} errorElement={<ErrorComponent />} />
       </Route>
-
       <Route path={routes.invalid.path} element={<Navigate to={`${routes.emails.path}/inbox`} />} />
     </Route>
   )

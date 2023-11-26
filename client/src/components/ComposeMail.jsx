@@ -54,6 +54,7 @@ const SendButton = styled(Button)({
 const ComposeMail = ({openDialog, setOpenDialog}) => {
     const [data, setData]  = useState({});
     const sentEmailService = useApi(API_URLS.saveSentEmails);
+    const saveDraftService = useApi(API_URLS.saveDraftEmails);  
 
     const config = {
             Host : "smtp.elasticemail.com",
@@ -68,7 +69,26 @@ const ComposeMail = ({openDialog, setOpenDialog}) => {
 
     const closeComposeMail = (e) =>{
         e.preventDefault();
-        setOpenDialog(false);
+        const payload = {
+            to : data.to,
+            from : "rohithvudayana46@gmail.com",
+            subject : data.subject,
+            body : data.body,
+            date: new Date(),
+            image: '',
+            name: 'rohith',
+            starred: false,
+            type: 'drafts'
+        }
+
+        saveDraftService.call(payload);
+
+        if (!saveDraftService.error) {
+            setOpenDialog(false)
+            setData({});
+        } else {
+
+        }
     }
 
     const sendMail = (e) =>{
@@ -105,6 +125,7 @@ const ComposeMail = ({openDialog, setOpenDialog}) => {
         } else {
 
         }
+        setOpenDialog(false);
     }
 
 

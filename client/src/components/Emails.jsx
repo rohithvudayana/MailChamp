@@ -11,6 +11,7 @@ const Emails = () => {
     useEffect(() => {
         getEmailService.call({}, type);
     }, [type])
+    
     return (
         <div style= { openDrawer ? { marginLeft: 200, width: '100%'} : { width: '100%'}}>
              hello from emails 

@@ -15,7 +15,9 @@ export const saveSendEmails = async (request, response) => {
 export const getEmails = async(request, response) => {
     try{
         let emails;
-        if(request.params.type === 'sent'){
+        if(false){
+            
+        } else {
             emails = await Email.find({type : request.params.type })
         }
         return response.status(200).json(emails);
