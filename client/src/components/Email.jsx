@@ -1,5 +1,3 @@
-
-
 import { ListItem, Checkbox, Typography, Box, styled } from "@mui/material";
 import { StarBorder, Star } from '@mui/icons-material';
 import useApi from '../hooks/useApi';
@@ -19,7 +17,6 @@ const Wrapper = styled(ListItem)`
         font-size: 14px;
     }
 `;
-
 const Indicator = styled(Typography)`
     font-size: 12px !important;
     background: #ddd;
@@ -28,7 +25,6 @@ const Indicator = styled(Typography)`
     margin-right: 6px;
     padding: 0 4px;
 `;
-
 const Date = styled(Typography)({
     marginLeft: 'auto',
     marginRight: 20,
@@ -38,9 +34,7 @@ const Date = styled(Typography)({
 
 const Email = ({ email, setStarredEmail, selectedEmails, setSelectedEmails }) => {
     const toggleStarredEmailService = useApi(API_URLS.toggleStarredMails);
-    
     const navigate = useNavigate();
-
     const toggleStarredEmail = () => {
         toggleStarredEmailService.call({ id: email._id, value: !email.starred });
         setStarredEmail(prevState => !prevState);
@@ -68,9 +62,10 @@ const Email = ({ email, setStarredEmail, selectedEmails, setSelectedEmails }) =>
                     <StarBorder fontSize="small" style={{ marginRight: 10 }} onClick={() => toggleStarredEmail()} /> 
             }
             <Box onClick={() => navigate(routes.view.path, { state: { email: email }})}>
-                <Typography style={{ width: 200 }}>To:{email.to.split('@')[0]}</Typography>
+                <Typography style={{ width: 200 }}> To: {email.to ? email.to.split('@')[0] : ''} </Typography>
                 <Indicator>Inbox</Indicator>
-                <Typography>{email.subject} {email.body && '-'} {email.body}</Typography>
+                <Typography> {email.subject} {email.body && '-'}{' '} {email.body && email.body.length > 70
+                ? `${email.body.slice(0, 70)}...` : email.body}</Typography>
                 <Date>
                     {(new window.Date(email.date)).getDate()}&nbsp;
                     {(new window.Date(email.date)).toLocaleString('default', { month: 'long' })}

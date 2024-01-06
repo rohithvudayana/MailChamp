@@ -23,7 +23,7 @@ const Emails = () => {
         getEmailsService.call({}, type);
     }, [type, starredEmail])
 
-    const selectAllEmails = (e) => {
+    const selectAllEmails = (e) => { 
         if (e.target.checked) {
             const emails = getEmailsService?.response?.map(email => email._id);
             setSelectedEmails(emails);
@@ -42,7 +42,7 @@ const Emails = () => {
     }
 
     return (
-        <Box style={openDrawer ? { marginLeft: 250, width: '100%' } : { width: '100%' } }>
+        <Box style={openDrawer ? { marginLeft: 200, width: 'calc(100% - 200px)' } : { width: 'calc(100%)' }}>
             <Box style={{ padding: '20px 10px 0 10px', display: 'flex', alignItems: 'center' }}>
                 <Checkbox size="small" onChange={(e) => selectAllEmails(e)} />
                 <DeleteOutline onClick={(e) => deleteSelectedEmails(e)} />
